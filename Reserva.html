@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="EstiloReservas.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="logicaCadastros.js" defer></script>
+    <title>Reservas</title>
+</head>  
+
+<body>
+    <div>
+        <h1>Verificar Reservas</h1>
+    </div>
+        
+        <form name="formReserva" id="form" method="post">
+
+            <p>Selecio a data de Inicio e a data final da sua reserva</p>        
+            
+            <br><br> Data Inicio<input type="datetime-local" name="reserve_outset" id="reserve_outset">
+            <br><br> Data final <input type="datetime-local" name="reserve_last" id="reserve_last">
+            <br><br> <button id="reservas" type="button" onclick="converteData()" >Verificar Reservas</button> 
+        
+        </form>
+        
+    </div><br><br>
+    <h3 id="h2"></h3>
+    
+    <div id="resultReservas">
+          
+        <table id="op">
+             
+        </table>
+    </div>
+
+
+</body>

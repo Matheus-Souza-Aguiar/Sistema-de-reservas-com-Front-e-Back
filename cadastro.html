@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="EstiloReservas.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="logicaCadastros.js" defer></script>
+    <title>Reservas</title>
+</head>
+  <body>
+     
+    
+    <div> 
+      <h1 id="titulo">Cadastro do carro</h1>
+      <br>
+    </div>  
+        
+        
+     <form name="formCarros" id="form"  method="post">
+        
+
+        <input id="model" name="model" type="text" placeholder="Modelo do carro" required><br><br>
+        <input id="board" name="board" type="text"  placeholder="Placa" required><br><br>
+        <input id="year" name="year" type="text" placeholder="Ano" required><br><br>
+        <button id="botao" type="button" onclick="cadastro()" >Confirmar Cadastro</button>
+              
+
+              
+     </form>     
+   
+  </body>
+</html>
