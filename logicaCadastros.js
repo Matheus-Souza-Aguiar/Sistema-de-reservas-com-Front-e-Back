@@ -91,7 +91,7 @@ function verificaReservas(reserve_outset, reserve_last){
     })
     .catch(erro => {console.log(erro)});
 
-  
+    
                
 };
 
@@ -107,47 +107,71 @@ function criaCelula(tag, text) {
     return tag
 }
 
+function limp(titulo, tabela){
+    
+    titulo.parentNode.removeChild(titulo)
+    tabela.parentNode.removeChild(tabela)
+}
+
+    
+
 function devolveOpcoes(data){
     
-    let titulo = document.getElementById("h2")
+    
+    
+    var titulo = document.getElementById("h2")
     tituloCarros = criaCelula("h2", "Carros disponiveis")
     titulo.appendChild(tituloCarros)
     
     
 
-    let tabela = document.getElementById("op");
+    var tabela = document.getElementById("op");
     
     let thead = criarTag("thead");
     let tbody = criarTag("tbody");
     let tfoot = criarTag("tfoot");
 
+
+    
+    
     tabela.appendChild(thead);
     tabela.appendChild(tbody);
     tabela.appendChild(tfoot);
 
+    
     let linhaHead = criarTag("tr")
     let indicesTabela = ["ID", "Modelo", "Ano de Fabricação"]
-    
+    var count = 0;
     for(let i = 0; i < indicesTabela.length; i++){
+        
         let th = criaCelula("th", indicesTabela[i]);
         linhaHead.appendChild(th);
+        
 
     }
     thead.appendChild(linhaHead)
     
+    
     for(let i = 0; i < data.length; i++){
         
-        let linhaBody = criarTag("tr");
- 
-        for(let j = 0; j < data.length; j++){
-
+        var linhaBody = criarTag("tr"); 
+         
+       
+        
+        for(let j = 0; j < indicesTabela.length; j++){
+                
             cel = '';
-            cel = criaCelula("td", data[j][i])
-           linhaBody.appendChild(cel);
-             
+            
+            
+            cel = criaCelula("td", data[i][j])
+
+            linhaBody.appendChild(cel);
+           
         }
-        tbody.appendChild(linhaBody);
+        tbody.appendChild(linhaBody); 
     }
- 
+    console.log(reserve_outset.value)
+   
+
 } 
   

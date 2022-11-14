@@ -129,10 +129,23 @@ body{
 
   }
 
-  #op{
+ #op {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
     align-items: center;
     text-align: center;
-    margin-top: 100px
-
   }
-
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    align-items: center;
+    padding: 1px;
+    
+    
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
