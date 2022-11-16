@@ -107,71 +107,92 @@ function criaCelula(tag, text) {
     return tag
 }
 
-function limp(titulo, tabela){
-    
-    titulo.parentNode.removeChild(titulo)
-    tabela.parentNode.removeChild(tabela)
-}
 
-    
+
+
 
 function devolveOpcoes(data){
     
+    const myElement = document.querySelector("thead")
+    const exist = document.body.contains(myElement)
     
-    
-    var titulo = document.getElementById("h2")
-    tituloCarros = criaCelula("h2", "Carros disponiveis")
-    titulo.appendChild(tituloCarros)
-    
-    
-
-    var tabela = document.getElementById("op");
-    
-    let thead = criarTag("thead");
-    let tbody = criarTag("tbody");
-    let tfoot = criarTag("tfoot");
-
-
-    
-    
-    tabela.appendChild(thead);
-    tabela.appendChild(tbody);
-    tabela.appendChild(tfoot);
-
-    
-    let linhaHead = criarTag("tr")
-    let indicesTabela = ["ID", "Modelo", "Ano de Fabricação"]
-    var count = 0;
-    for(let i = 0; i < indicesTabela.length; i++){
+    if(exist == false){
         
-        let th = criaCelula("th", indicesTabela[i]);
-        linhaHead.appendChild(th);
         
+        let titulo = document.getElementById("tit")
+        tituloCarros = criaCelula("h2", "Carros disponiveis")
+        console.log(titulo)
+        console.log(tituloCarros)
 
-    }
-    thead.appendChild(linhaHead)
-    
-    
-    for(let i = 0; i < data.length; i++){
-        
-        var linhaBody = criarTag("tr"); 
-         
-       
-        
-        for(let j = 0; j < indicesTabela.length; j++){
-                
-            cel = '';
+        titulo.appendChild(tituloCarros)
             
             
-            cel = criaCelula("td", data[i][j])
 
-            linhaBody.appendChild(cel);
-           
+        let tabela = document.getElementById("op");
+        
+        let thead = criarTag("thead");
+        let tbody = criarTag("tbody");
+        let tfoot = criarTag("tfoot");
+
+
+        
+        
+        tabela.appendChild(thead);
+        tabela.appendChild(tbody);
+        tabela.appendChild(tfoot);
+
+        
+        let linhaHead = criarTag("tr")
+        let indicesTabela = ["ID", "Modelo", "Ano de Fabricação"]
+        
+        for(let i = 0; i < indicesTabela.length; i++){
+            
+            let th = criaCelula("th", indicesTabela[i]);
+            linhaHead.appendChild(th);
+            
+
         }
-        tbody.appendChild(linhaBody); 
-    }
-    console.log(reserve_outset.value)
-   
+        thead.appendChild(linhaHead)
+        
+        
+        for(let i = 0; i < data.length; i++){
+            
+            var linhaBody = criarTag("tr"); 
+            
+        
+            
+            for(let j = 0; j < indicesTabela.length; j++){
+                    
+                cel = '';
+                
+                
+                cel = criaCelula("td", data[i][j])
 
-} 
-  
+                linhaBody.appendChild(cel);
+            
+            }
+            tbody.appendChild(linhaBody); 
+        }
+        console.log(reserve_outset.value)
+    }   
+    
+    else if(exist == true) {
+       remove(data)
+    }
+}
+
+function remove(data){
+    
+    let titulo = document.querySelector('h2')
+    let thead = document.querySelector('thead')
+    let tbody = document.querySelector('tbody')
+    let tfoot = document.querySelector('tfoot')
+
+    titulo.remove(titulo)
+    thead.remove(thead)
+    tbody.remove(tbody)
+    tfoot.remove(tfoot)
+
+    
+    devolveOpcoes(data)
+}   

@@ -141,11 +141,19 @@ body{
     border: 1px solid #dddddd;
     text-align: center;
     align-items: center;
-    padding: 1px;
+    padding: 8px;
+    
     
     
   }
   
   tr:nth-child(even) {
     background-color: #dddddd;
+    border: 1px solid #dddddd;
+    text-align: center;
+    align-items: center;
+    padding: 0px;
   }
+
+
+  
