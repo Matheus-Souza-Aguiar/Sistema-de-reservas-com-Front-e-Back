@@ -5,7 +5,6 @@
 
 body{
    
-    
     align-items: center;
     text-align: center;
     margin-top: 100px;
@@ -130,30 +129,44 @@ body{
   }
 
  #op {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-    align-items: center;
-    text-align: center;
+  margin-top: 1%;
+  width:80%;
+  margin:0 auto;
+  border:0;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
   }
   
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    align-items: center;
-    padding: 8px;
-    
-    
+  #op thead td {
+    font-weight: bold;
+    background-color: black;
+    color:white;
+    padding:5px 10px;
     
   }
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
-    border: 1px solid #dddddd;
-    text-align: center;
-    align-items: center;
-    padding: 0px;
-  }
+  #op tr td{
+    padding:5px 10px;
+  text-align: center;
+  
+  cursor: pointer;
+    
+ }
+
+ #op tr td:last-child{
+  text-align: right;
+}
+
+#op tr:nth-child(odd){
+  background-color: #eee;
+}
+
+#op tr:hover td{
+  background-color: #feffb7;
+}
+
+#op tr.selecionado td{
+  background-color: #aff7ff;
+}
 
 
-  

@@ -7,7 +7,6 @@ class Carro {
 }    
 };
 
-
 class Reserva{
     constructor(reserve_outset, reserve_last) { 
     
@@ -36,7 +35,6 @@ function cadastro(){
     this.form.reset();
 
 };
-
 
 function converteData() {
      
@@ -69,8 +67,6 @@ function converteData() {
     verificaReservas(reserve_outset, reserve_last)
 };
 
-
-
 function verificaReservas(reserve_outset, reserve_last){
      
     let form = document.forms["formReserva"]
@@ -94,22 +90,6 @@ function verificaReservas(reserve_outset, reserve_last){
     
                
 };
-
-function criarTag(elemento){
-    
-    return document.createElement(elemento)
-
-}
-
-function criaCelula(tag, text) {
-    tag = criarTag(tag);
-    tag.textContent = text
-    return tag
-}
-
-
-
-
 
 function devolveOpcoes(data){
     
@@ -175,10 +155,37 @@ function devolveOpcoes(data){
         }
         console.log(reserve_outset.value)
     }   
-    
+
     else if(exist == true) {
        remove(data)
     }
+    var botaoId = document.getElementById('bot')
+    var botao = criaCelula('button', 'Confirmar')
+    botaoId.appendChild(botao)
+    
+    getId()
+       
+}
+
+
+function getId(){
+   var id = document.getElementById('op').getElementsByTagName('tbody') 
+    for(var i = 0; i < id.length; i++ ){
+       console.log(id[i])
+   }
+   
+}
+
+function criarTag(elemento){
+    
+    return document.createElement(elemento)
+
+}
+
+function criaCelula(tag, text) {
+    tag = criarTag(tag);
+    tag.textContent = text
+    return tag
 }
 
 function remove(data){
