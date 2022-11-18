@@ -16,6 +16,8 @@ class Reserva{
     
 };
 
+var tabela = document.getElementById("op");
+
 
 
 function cadastro(){
@@ -82,7 +84,7 @@ function verificaReservas(reserve_outset, reserve_last){
     ).then(response => {
         const data = response.data 
         console.log(data)
-        devolveOpcoes(data)
+        devolveOpcoes(data, reserve_outset, reserve_last)
    
     })
     .catch(erro => {console.log(erro)});
@@ -91,8 +93,7 @@ function verificaReservas(reserve_outset, reserve_last){
                
 };
 
-function devolveOpcoes(data){
-    
+function devolveOpcoes(data,reserve_outset, reserve_last){
     const myElement = document.querySelector("thead")
     const exist = document.body.contains(myElement)
     
@@ -108,7 +109,7 @@ function devolveOpcoes(data){
             
             
 
-        let tabela = document.getElementById("op");
+        
         
         let thead = criarTag("thead");
         let tbody = criarTag("tbody");
@@ -153,30 +154,67 @@ function devolveOpcoes(data){
             }
             tbody.appendChild(linhaBody); 
         }
-        console.log(reserve_outset.value)
+        
     }   
 
     else if(exist == true) {
        remove(data)
     }
-    
-    
     getId()
        
 }
 
-function test(){
-    alert("fui clicado")
-}
-
-
 
 function getId(){
-   var id = document.getElementById('op').getElementsByTagName('tbody') 
-   id.forEach( function (e) {
-       e.addEventListener('click', test())
-})
+   var id = document.getElementById('op').getElementsByTagName('tr') 
+   console.log('length: ', id)
+   for(var i = 0; i < id.length; i++ ){
+       var linhaId = id[i];
+       linhaId.addEventListener("click", function(){
+               
+               verificaLinha(this, false);
+       })
+   }
+   
 }
+
+function verificaLinha(linhaId, multiplos){
+    console.log("linhaId ", linhaId.getElementsByTagName("td")[0])
+    console.log("multiplos ", multiplos)
+    var idCarro = linhaId.getElementsByTagName("td")[0]
+    console.log('carro: ', idCarro)
+
+    console.log('carro: ', idCarro.textContent)
+    console.log('carro: ', idCarro.innerText)
+    if(!multiplos){
+        var id = linhaId.parentElement.getElementsByTagName("tr")
+    
+        for(var i = 0; i < id.length; i++){
+            var linha_ = id[i]
+            linha_.classList.remove("selecionado");
+        }
+    }
+
+    // id.find(el => el.cells.includes(index))
+    // console.log('id: ', id)
+    // console.log('id: ', id.classList)
+//    id.classList.toggle("selecionado");
+   confirmaReserva()
+} 
+
+function confirmaReserva(){
+    var selecionados = tabela.getElementsByClassName("selecionado");
+    console.log(selecionados)
+    var infomacoesDoCarro = ""
+    for(var i = 0; i < selecionados.length; i++){
+        var selecionado = selecionados[i];
+        selecionado = selecionado.getElementsByTagName("td");
+        infomacoesDoCarro = selecionado[0]
+
+    }
+    alert(infomacoesDoCarro)
+} 
+
 
 
 function criarTag(elemento){
