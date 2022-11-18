@@ -159,22 +159,25 @@ function devolveOpcoes(data){
     else if(exist == true) {
        remove(data)
     }
-    var botaoId = document.getElementById('bot')
-    var botao = criaCelula('button', 'Confirmar')
-    botaoId.appendChild(botao)
+    
     
     getId()
        
 }
 
+function test(){
+    alert("fui clicado")
+}
+
+
 
 function getId(){
    var id = document.getElementById('op').getElementsByTagName('tbody') 
-    for(var i = 0; i < id.length; i++ ){
-       console.log(id[i])
-   }
-   
+   id.forEach( function (e) {
+       e.addEventListener('click', test())
+})
 }
+
 
 function criarTag(elemento){
     
