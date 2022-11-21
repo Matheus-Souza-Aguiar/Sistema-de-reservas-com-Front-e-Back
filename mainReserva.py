@@ -62,7 +62,7 @@ def reservar(cars: Cars):
         return {'Erro': 'Por favor conferir os dados do carro.'}
 
 
-@app.post('/reserva_carro')
+@app.post('/consulta_reserva')
 def reserved_car(reservedCar: ReservedCar):
     list_True_False = []
     ids = []

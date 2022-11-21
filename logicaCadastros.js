@@ -75,7 +75,7 @@ function verificaReservas(reserve_outset, reserve_last){
     let form = document.forms["formReserva"]
     let newReserva = new Reserva 
      
-    axios.post('http://localhost:8000/reserva_carro',
+    axios.post('http://localhost:8000/consulta_reserva',
     
     {
         reserve_outset: reserve_outset,
@@ -195,22 +195,28 @@ function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
 
 function confirmaReserva(id_car, reserve_outset, reserve_last){
      
-    axios.post('http://localhost:8000/faz_reserva',
+    if(confirm('Confirmar reserva')){
+        axios.post('http://localhost:8000/faz_reserva',
+        
+        {
+            id_car: id_car,
+            reserve_outset: reserve_outset,
+            reserve_last: reserve_last       
+        }
+        
+        ).then(response => {
+            const data = response.data 
+            console.log(data)
+            console.log("Reservado")
     
-    {
-        id_car: id_car,
-        reserve_outset: reserve_outset,
-        reserve_last: reserve_last       
+        })
+        .catch(erro => {console.log(erro)});
+        alert("Reserva registrada")
+        window.location.reload()
     }
-    
-    ).then(response => {
-        const data = response.data 
-        console.log(data)
-        console.log("Reservado")
-   
-    })
-    .catch(erro => {console.log(erro)});
-    window.location.reload()
+    else {
+        alert("Após revisar escolha, selecione um carro para reserva")
+    }
 } 
 
 
