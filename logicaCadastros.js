@@ -8,14 +8,15 @@ class Carro {
 };
 
 class Reserva{
-    constructor(reserve_outset, reserve_last) { 
-    
+    constructor(reserve_outset, reserve_last, id_car) { 
+    this.id_car = id_car
     this.reserve_outset = reserve_outset
     this.reserve_last = reserve_last
 }
     
 };
 
+// Variáveis globais
 var tabela = document.getElementById("op");
 
 
@@ -160,32 +161,27 @@ function devolveOpcoes(data,reserve_outset, reserve_last){
     else if(exist == true) {
        remove(data)
     }
-    getId()
+    getId(reserve_outset, reserve_last)
        
 }
 
 
-function getId(){
+function getId(reserve_outset, reserve_last){
    var id = document.getElementById('op').getElementsByTagName('tr') 
    console.log('length: ', id)
    for(var i = 0; i < id.length; i++ ){
        var linhaId = id[i];
        linhaId.addEventListener("click", function(){
                
-               verificaLinha(this, false);
+               verificaLinha(this, false, reserve_outset, reserve_last);
        })
    }
    
 }
 
-function verificaLinha(linhaId, multiplos){
-    console.log("linhaId ", linhaId.getElementsByTagName("td")[0])
-    console.log("multiplos ", multiplos)
-    var idCarro = linhaId.getElementsByTagName("td")[0]
-    console.log('carro: ', idCarro)
-
-    console.log('carro: ', idCarro.textContent)
-    console.log('carro: ', idCarro.innerText)
+function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
+    var id_carS = linhaId.getElementsByTagName("td")[0]
+    var id_car = parseInt(id_carS.innerText)
     if(!multiplos){
         var id = linhaId.parentElement.getElementsByTagName("tr")
     
@@ -194,25 +190,27 @@ function verificaLinha(linhaId, multiplos){
             linha_.classList.remove("selecionado");
         }
     }
-
-    // id.find(el => el.cells.includes(index))
-    // console.log('id: ', id)
-    // console.log('id: ', id.classList)
-//    id.classList.toggle("selecionado");
-   confirmaReserva()
+   confirmaReserva(id_car, reserve_outset, reserve_last)
 } 
 
-function confirmaReserva(){
-    var selecionados = tabela.getElementsByClassName("selecionado");
-    console.log(selecionados)
-    var infomacoesDoCarro = ""
-    for(var i = 0; i < selecionados.length; i++){
-        var selecionado = selecionados[i];
-        selecionado = selecionado.getElementsByTagName("td");
-        infomacoesDoCarro = selecionado[0]
-
+function confirmaReserva(id_car, reserve_outset, reserve_last){
+     
+    axios.post('http://localhost:8000/faz_reserva',
+    
+    {
+        id_car: id_car,
+        reserve_outset: reserve_outset,
+        reserve_last: reserve_last       
     }
-    alert(infomacoesDoCarro)
+    
+    ).then(response => {
+        const data = response.data 
+        console.log(data)
+        console.log("Reservado")
+   
+    })
+    .catch(erro => {console.log(erro)});
+    window.location.reload()
 } 
 
 
@@ -243,4 +241,4 @@ function remove(data){
 
     
     devolveOpcoes(data)
-}   
+} 
