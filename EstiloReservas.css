@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+
+
+
 body{
  
   align-items: center;
@@ -129,8 +132,8 @@ color: black;;
 }
 
 #op {
-margin-top: 1%;
-width:80%;
+top: 10%;
+width:50%;
 margin:0 auto;
 border:0;
 box-shadow: 0 5px 30px darkgrey;
@@ -138,6 +141,7 @@ border-spacing: 0;
 }
 
 #op thead th{
+  width: 10%;
   font-weight: bold;
   background-color: black;
   color:white;
@@ -146,10 +150,10 @@ border-spacing: 0;
 }
 
 #op tr td{
+  width: 10%;
   padding:5px 10px;
-text-align: center;
-
-cursor: pointer;
+  text-align: center;
+  cursor: pointer;
   
 }
 
@@ -214,4 +218,107 @@ background-color: #aff7ff;
   text-decoration: none;  
   border-radius: 30px 30px;
   box-shadow: 3px 3px 3px;
+}
+
+#for{
+  position: relative;
+  right: 400px;
+  
+  
+  
+}
+
+#form{
+  padding: 30px;
+  
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #ffca28;
+}
+
+#resultReservas{
+  position: relative;
+  left: 250px;
+  bottom: 420px;
+}
+
+
+
+
+#tit{
+  position: relative;
+  left: 250px;
+  bottom: 350px;
+}
+
+
+nav {
+  width: 300px;
+  background: white;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-clip-path: circle(24px at 30px 24px);
+  clip-path: circle(24px at 32px 24px);
+  -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+  transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+}
+
+nav:hover {
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-clip-path: circle(390px at 225px 24px);
+  clip-path: circle(390px at 150px 24px);
+}
+
+a {
+  display: block;
+  line-height: 50px;
+  padding: 0 20px;
+  color: inherit;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #ffca28;
+}
+
+a:hover { background: #ffe082; }
+
+a:active { background: #ffca28; }
+
+.navicon {
+  padding: 23px 20px;
+  cursor: pointer;
+  -webkit-transform-origin: 32px 24px;
+  -ms-transform-origin: 32px 24px;
+  transform-origin: 32px 24px;
+}
+
+.navicon div {
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.87);
+}
+
+.navicon div:before,
+.navicon div:after {
+  display: block;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.87);
+  position: absolute;
+}
+
+.navicon div:before { top: -7px; }
+
+.navicon div:after { top: 7px; }
+
+.navicon{
+  position: relative;
+  background-color: aqua;
+  
 }
