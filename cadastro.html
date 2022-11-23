@@ -10,33 +10,28 @@
     <title>Reservas</title>
 </head>
   <body>
-     
-    <nav>
-      <div class="navicon">
-        <div></div>
-      </div>
-    
-      <a href="/Reserva.html">Reservar Veiculo</a>
-      <a href="/MenuSistemaReservas.html">Menu</a>
-   </nav>
-    
-    <div> 
-      <h1 id="titulo">Cadastro do carro</h1>
-      <br>
-    </div>  
+    <div id="container">  
+      <nav>
+        <div class="navicon">
+          <div></div>
+        </div>
+      
+        <a href="/Reserva.html">Reservar Veiculo</a>
+        <a href="/MenuSistemaReservas.html">Menu</a>
+    </nav>
+      
+     <div> 
+          <h1 id="titulo">Cadastro do carro</h1>
+          <br>
         
-        
-     <form name="formCarros" id="form"  method="post">
-        
-
-        <input id="model" name="model" type="text" placeholder="Modelo do carro" required><br><br>
-        <input id="board" name="board" type="text"  placeholder="Placa" required><br><br>
-        <input id="year" name="year" type="text" placeholder="Ano" required><br><br>
-        <button id="botao" type="button" onclick="cadastro()" >Confirmar Cadastro</button>
-              
-
-              
-     </form>     
-   
+           <form name="formCarros" id="form"  method="post">
+            
+             <input id="model" name="model" type="text" placeholder="Modelo do carro" required><br><br>
+             <input id="board" name="board" type="text"  placeholder="Placa" required><br><br>
+             <input id="year" name="year" type="text" placeholder="Ano" required><br><br>
+             <button id="botao" type="button" onclick="cadastro()" >Confirmar Cadastro</button>
+     </div>             
+            </form>     
+    </div>
   </body>
 </html>

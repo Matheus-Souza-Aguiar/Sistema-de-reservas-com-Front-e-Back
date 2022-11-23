@@ -1,3 +1,6 @@
+/* Estilo da Pagina cadastro*/
+
+
 * {
   margin: 0;
   padding: 0;
@@ -11,17 +14,19 @@ body{
   align-items: center;
   text-align: center;
   margin-top: 100px;
-  
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 
 }
 
 
 
-#campoc{
-  width: auto;
-  padding: 10px;
-  ;   
+#container{
+  display: flex;
 
+  
 
 }
 
@@ -133,7 +138,7 @@ color: black;;
 
 #op {
 top: 10%;
-width:50%;
+width:170%;
 margin:0 auto;
 border:0;
 box-shadow: 0 5px 30px darkgrey;
@@ -220,39 +225,31 @@ background-color: #aff7ff;
   box-shadow: 3px 3px 3px;
 }
 
-#for{
-  position: relative;
-  right: 400px;
-  
-  
-  
-}
-
-#form{
-  padding: 30px;
-  
-  margin: 10px;
-  border-radius: 10px;
-  background-color: #ffca28;
+#container{
+   display: flex;
+   background-color: white;
 }
 
 #resultReservas{
   position: relative;
-  left: 250px;
-  bottom: 420px;
+  right: 18px;
+  height: 10PX;
 }
 
-
+#for{
+  border-radius: 50px;
+}
 
 
 #tit{
   position: relative;
-  left: 250px;
-  bottom: 350px;
+  left: 300px;
+  top: 11px;
 }
 
 
 nav {
+ 
   width: 300px;
   background: white;
   color: rgba(0, 0, 0, 0.87);

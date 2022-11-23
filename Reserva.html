@@ -12,44 +12,45 @@
 
 <body>
    
-    <nav>
-        <div class="navicon">
-          <div></div>
-        </div>
-      
-        <a href="/cadastro.html">Cadastrar Veículo</a>
-        <a href="/MenuSistemaReservas.html">Menu</a>
-    </nav>
+    <div id="container">
+        <nav>
+            <div class="navicon">
+            <div></div>
+            </div>
+        
+            <a href="/cadastro.html">Cadastrar Veículo</a>
+            <a href="/MenuSistemaReservas.html">Menu</a>
+        </nav>
 
-    <div id="for">
-        
-        
-        <h1>Verificar Reservas</h1>
-       
-        
-        <form name="formReserva" id="form" method="post">
-
-            <p>Selecio a data de Inicio e a data final da sua reserva</p>        
+        <div id="for">
             
-            <br><br> Data Inicio<input type="datetime-local" name="reserve_outset" id="reserve_outset">
-            <br><br> Data final <input type="datetime-local" name="reserve_last" id="reserve_last">
-            <br><br> <button id="reservas" type="button" onclick="converteData()" >Verificar Reservas</button> 
+            
+            <h1>Verificar Reservas</h1>
         
-        </form>
-    </div> 
-      <br><br>
-      <div id="tit">
+            
+            <form name="formReserva" id="form" method="post">
 
-      </div>
-      <div id="resultReservas">
-          
-          <table id="op">
-             
-          </table>
-      </div>
-      <div id="bot">
+                <p>Selecio a data de Inicio e a data final da sua reserva</p>        
+                
+                <br><br> Data Inicio<input type="datetime-local" name="reserve_outset" id="reserve_outset">
+                <br><br> Data final <input type="datetime-local" name="reserve_last" id="reserve_last">
+                <br><br> <button id="reservas" type="button" onclick="converteData()" >Verificar Reservas</button> 
+            
+            </form>
+        </div> 
+        <br><br>
+        <div id="tit">
 
-      </div>
-    
+        </div>
+        <div id="resultReservas">
+            
+            <table id="op">
+                
+            </table>
+        </div>
+        <div id="bot">
+
+        </div>
+    </div>
 
 </body>
