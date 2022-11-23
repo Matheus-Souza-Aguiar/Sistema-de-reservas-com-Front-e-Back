@@ -18,6 +18,7 @@ body{
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
+  overflow-y: hidden; 
 
 }
 
@@ -25,7 +26,7 @@ body{
 
 #container{
   display: flex;
-
+  
   
 
 }
@@ -126,62 +127,32 @@ color: black;;
   color: black;;
 }
 
+
+
 /* Estilo da Pagina reservas*/
 
-#resultReservas{
 
+
+#resultReservas{
+  position: relative;
+  left: 2px;
   align-items: center;
   text-align: center;
   margin-top: 100px;
-
-}
-
-#op {
-top: 10%;
-width:170%;
-margin:0 auto;
-border:0;
-box-shadow: 0 5px 30px darkgrey;
-border-spacing: 0;
-}
-
-#op thead th{
-  width: 10%;
-  font-weight: bold;
-  background-color: black;
-  color:white;
-  padding:5px 10px;
+  min-height: 300px;
+  min-width: 422px;
+  overflow-x: hidden; 
+  overflow-y: scroll; 
+  white-space: nowrap;
   
+
 }
 
-#op tr td{
-  width: 10%;
-  padding:5px 10px;
-  text-align: center;
-  cursor: pointer;
-  
-}
-
-#op tr td:last-child{
-text-align: center;
-}
-
-#op tr:nth-child(odd){
-background-color: #eee;
-}
-
-#op tr:hover td{
-background-color: #feffb7;
-}
-
-#op tr.selecionado td{
-background-color: #aff7ff;
-}
 
 #form{
   width: auto;
   padding: 10px;
-  ; 
+  
 }
 #reserve_outset{
   margin: 10px 25px;
@@ -226,15 +197,10 @@ background-color: #aff7ff;
 }
 
 #container{
-   display: flex;
-   background-color: white;
+  display: flex;
+  background-color: white;
 }
 
-#resultReservas{
-  position: relative;
-  right: 18px;
-  height: 10PX;
-}
 
 #for{
   border-radius: 50px;
@@ -243,8 +209,7 @@ background-color: #aff7ff;
 
 #tit{
   position: relative;
-  left: 300px;
-  top: 11px;
+  left: 270px;
 }
 
 
@@ -319,3 +284,66 @@ a:active { background: #ffca28; }
   background-color: aqua;
   
 }
+
+
+
+
+
+/* Estilo da tabela */
+
+
+#resultReservas{
+  position: relative;
+  right: 70px;
+  height: 100PX;
+  bottom: 50px;
+  
+}
+
+
+#op {
+  position: relative;
+  right: 250px;
+  bottom: 0%;
+  width:162%;
+  margin:0 auto;
+  border:0;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
+  
+  
+  }
+  
+  #op thead th{
+    width: 10%;
+    font-weight: bold;
+    background-color: black;
+    color:white;
+    padding:5px 10px;
+    
+  }
+  
+  #op tr td{
+    width: 10%;
+    padding:5px 10px;
+    text-align: center;
+    cursor: pointer;
+    
+  }
+  
+  #op tr td:last-child{
+  text-align: center;
+  }
+  
+  #op tr:nth-child(odd){
+  background-color: #eee;
+  }
+  
+  #op tr:hover td{
+  background-color: #feffb7;
+  }
+  
+  #op tr.selecionado td{
+  background-color: #aff7ff;
+  }
+  
