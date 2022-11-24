@@ -18,7 +18,7 @@ class Reserva{
 
 // Variáveis globais
 var tabela = document.getElementById("op");
-
+var divResult = document.getElementById("resultReservas")
 
 
 function cadastro(){
@@ -39,8 +39,7 @@ function cadastro(){
 
 };
 
-function converteData() {
-     
+function converteData() { 
     let form = document.forms["formReserva"]
     
     var reserve_outset = document.getElementById('reserve_outset').value
@@ -95,12 +94,14 @@ function verificaReservas(reserve_outset, reserve_last){
 };
 
 function devolveOpcoes(data,reserve_outset, reserve_last){
+    
     const myElement = document.querySelector("thead")
     const exist = document.body.contains(myElement)
     
     if(exist == false){
         
-        
+        let div = criarTag("div")
+        divResult.appendChild(div)   
         let titulo = document.getElementById("tit")
         tituloCarros = criaCelula("h2", "Carros disponiveis")
         console.log(titulo)
@@ -156,12 +157,14 @@ function devolveOpcoes(data,reserve_outset, reserve_last){
             tbody.appendChild(linhaBody); 
         }
         
+        getId(reserve_outset, reserve_last)
     }   
 
     else if(exist == true) {
        remove(data)
+       
     }
-    getId(reserve_outset, reserve_last)
+    
        
 }
 
@@ -179,6 +182,8 @@ function getId(reserve_outset, reserve_last){
    
 }
 
+
+
 function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
     var id_carS = linhaId.getElementsByTagName("td")[0]
     var id_car = parseInt(id_carS.innerText)
@@ -193,9 +198,11 @@ function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
    confirmaReserva(id_car, reserve_outset, reserve_last)
 } 
 
+
+
 function confirmaReserva(id_car, reserve_outset, reserve_last){
      
-    if(confirm('Confirmar reserva')){
+    if(confirm('Confirmar reserva ?')){
         axios.post('http://localhost:8000/faz_reserva',
         
         {
