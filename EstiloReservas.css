@@ -10,7 +10,7 @@
 
 
 body{
- 
+  
   align-items: center;
   text-align: center;
   margin-top: 100px;
@@ -31,17 +31,12 @@ body{
   width: 0px;
 }
 
-#container{
-  display: flex;
-  
-  
 
-}
-
-
+ 
 #cadastro{
   position: relative;
   left: 150px;
+  
 }
 
 #model{
@@ -134,16 +129,16 @@ body{
 
 #resultReservas{
   position: relative;
-  left: 2px;
+  left: -53px; 
   align-items: center;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 60px;
   min-height: 300px;
-  min-width: 422px;
+  min-width: 430px;
   overflow-x: hidden; 
   overflow-y: scroll; 
   white-space: nowrap;
-  
+     
 
 }
 
@@ -196,19 +191,27 @@ body{
 }
 
 #container{
-  display: flex;
+  display: flex ;
   background-color: white;
 }
 
 
+
 #for{
+  position: relative;
+  top: 25px;
   border-radius: 50px;
+  right: 10px;
+
+   
 }
 
 
 #tit{
   position: relative;
-  left: 270px;
+  margin-top: 15px;
+  left: 230px;
+  height: 1px;
 }
 
 
@@ -295,7 +298,8 @@ a:active { background: #ffca28; }
   position: relative;
   right: 70px;
   height: 100PX;
-  bottom: 50px;
+  bottom: 10px;
+  
   
 }
 
@@ -303,8 +307,8 @@ a:active { background: #ffca28; }
 #op {
   position: relative;
   right: 250px;
-  bottom: 0%;
-  width:162%;
+  bottom: 1%;
+  width: 162%;
   margin:0 auto;
   border:0;
   box-shadow: 0 5px 30px darkgrey;
@@ -314,7 +318,7 @@ a:active { background: #ffca28; }
   }
   
   #op thead th{
-    width: 10%;
+    width: 0%;
     font-weight: bold;
     background-color: black;
     color:white;
@@ -339,7 +343,7 @@ a:active { background: #ffca28; }
   }
   
   #op tr:hover td{
-  background-color: #feffb7;
+  background-color: #21c036;
   }
   
   #op tr.selecionado td{

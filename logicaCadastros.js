@@ -18,7 +18,7 @@ class Reserva{
 
 // Variáveis globais
 var tabela = document.getElementById("op");
-var divResult = document.getElementById("resultReservas")
+
 
 
 function cadastro(){
@@ -100,8 +100,8 @@ function devolveOpcoes(data,reserve_outset, reserve_last){
     
     if(exist == false){
         
-        let div = criarTag("div")
-        divResult.appendChild(div)   
+        
+         
         let titulo = document.getElementById("tit")
         tituloCarros = criaCelula("h2", "Carros disponiveis")
         console.log(titulo)
