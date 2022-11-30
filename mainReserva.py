@@ -35,18 +35,18 @@ app.add_middleware(
 ) 
 
 
+
 class Cars(BaseModel):
-    model: str
-    board: str
-    year:  str
-    state: str = 'disponivel'
-    
-    
+    idcar: int = None
+    model: str = None
+    board: str = None
+    year:  str = None
+    state: str = 'disponivel' 
 
 class ReservedCar(BaseModel):
     id_car: int = None
-    reserve_outset: str 
-    reserve_last: str 
+    reserve_outset: str = None
+    reserve_last: str = None
 
 
 @app.post('/cadastro')
@@ -235,14 +235,46 @@ def checkout(reservedCar: ReservedCar):
         except:
             return {'Erro': 'Verificar dados de reserva (id)'}
 
+
+
 @app.get('/listar_carro')
 def listar_carro():
     car = []
-    check = """SELECT cars.idcar, cars.modelcar, cars.yearcar
-                                       FROM cars """
+    check = """SELECT cars.idcar, cars.modelcar, cars.yearcar, cars.statecar
+                                       FROM cars 
+                                       order by  idcar  ASC """
     cursor.execute(check)
     list_car_reserve = cursor.fetchall()
     for cars in list_car_reserve:
         car.append(cars)
     return car
 
+
+@app.post('/update_car')
+def update_state(cars: Cars):
+    
+    try:
+        registration = f"""update cars 
+                        set statecar = '{cars.state}'
+                        where idcar = {cars.idcar}"""
+
+        cursor.execute(registration)
+        conn.commit()
+        return {'msg': 'deu certo'}
+    except:
+        return {'msg': 'deu errado'}    
+
+
+
+@app.post('/delete_reserve')
+def delete_reserve(reservedCar: ReservedCar):
+
+    try:
+        registration = f"""delete from reservedcar 
+                        where  idreservation  = {reservedCar.id_car}"""
+        
+        cursor.execute(registration)
+        conn.commit()
+        return {'msg': 'deu certo'}                   
+    except:
+       return {'msg': 'deu errado'}       
