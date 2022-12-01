@@ -1,11 +1,16 @@
+
+// Definição das classes 
+
 class Carro {
     
-    constructor(model, board, year){
+    constructor(model, board, year, state){
     this.model = model
     this.board = board
     this.year = year
+    this.state = state
 }    
 };
+
 
 class Reserva{
     constructor(reserve_outset, reserve_last, id_car) { 
@@ -16,10 +21,13 @@ class Reserva{
     
 };
 
+
 // Variáveis globais
 var tabela = document.getElementById("op");
 
 
+
+// Funções para página de cadastro
 
 function cadastro(){
     let form  = document.forms["formCarros"]
@@ -38,6 +46,9 @@ function cadastro(){
     this.form.reset();
 
 };
+
+
+// Funções para página de reservas
 
 function converteData() { 
     let form = document.forms["formReserva"]
@@ -69,6 +80,7 @@ function converteData() {
     verificaReservas(reserve_outset, reserve_last)
 };
 
+
 function verificaReservas(reserve_outset, reserve_last){
      
     let form = document.forms["formReserva"]
@@ -92,6 +104,7 @@ function verificaReservas(reserve_outset, reserve_last){
     
                
 };
+
 
 function devolveOpcoes(data,reserve_outset, reserve_last){
     
@@ -183,7 +196,6 @@ function getId(reserve_outset, reserve_last){
 }
 
 
-
 function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
     var id_carS = linhaId.getElementsByTagName("td")[0]
     var id_car = parseInt(id_carS.innerText)
@@ -197,7 +209,6 @@ function verificaLinha(linhaId, multiplos, reserve_outset, reserve_last){
     }
    confirmaReserva(id_car, reserve_outset, reserve_last)
 } 
-
 
 
 function confirmaReserva(id_car, reserve_outset, reserve_last){
@@ -226,7 +237,28 @@ function confirmaReserva(id_car, reserve_outset, reserve_last){
     }
 } 
 
+// Funções para página de update
 
+function upadate_state(){
+    let form  = document.forms["formUpdate"]
+    let newCarro = new Carro
+    axios.post('http://localhost:8000/update_car', 
+    
+    {
+        state: form["state"].value,
+        board: form["board"].value
+    }
+    
+    ).then(response => {console.log(response.data)})
+    .catch(erro => {console.log(erro)});
+    alert("Carro encontrado")
+    this.form.reset();
+}
+
+// MRC90
+
+
+// Funções reutilizáveis 
 
 function criarTag(elemento){
     
@@ -234,11 +266,13 @@ function criarTag(elemento){
 
 }
 
+
 function criaCelula(tag, text) {
     tag = criarTag(tag);
     tag.textContent = text
     return tag
 }
+
 
 function remove(data){
     
@@ -255,3 +289,4 @@ function remove(data){
     
     devolveOpcoes(data)
 } 
+

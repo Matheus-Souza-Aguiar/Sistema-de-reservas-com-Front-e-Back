@@ -34,8 +34,6 @@ app.add_middleware(
 
 ) 
 
-
-
 class Cars(BaseModel):
     idcar: int = None
     model: str = None
@@ -237,6 +235,21 @@ def checkout(reservedCar: ReservedCar):
 
 
 
+@app.post('/check_board')
+def check_board(cars: Cars):
+    car = []
+    check = f""" select * 
+                from cars 
+                where boardcar = '{cars.board}' """
+    cursor.execute(check)
+    list_car_reserve = cursor.fetchall()
+    for cars in list_car_reserve:
+        car.append(cars)
+    return car
+
+
+
+
 @app.get('/listar_carro')
 def listar_carro():
     car = []
@@ -256,13 +269,22 @@ def update_state(cars: Cars):
     try:
         registration = f"""update cars 
                         set statecar = '{cars.state}'
-                        where idcar = {cars.idcar}"""
+                        where boardcar = '{cars.board}'"""
 
         cursor.execute(registration)
         conn.commit()
-        return {'msg': 'deu certo'}
+        car = []
+        check = f""" select * 
+                from cars 
+                where boardcar = '{cars.board}' """
+        cursor.execute(check)
+        list_car_reserve = cursor.fetchall()
+        for cars in list_car_reserve:
+            car.append(cars)
+
+        return car
     except:
-        return {'msg': 'deu errado'}    
+        return {'msg': 'Não encontrado'}    
 
 
 
@@ -277,4 +299,4 @@ def delete_reserve(reservedCar: ReservedCar):
         conn.commit()
         return {'msg': 'deu certo'}                   
     except:
-       return {'msg': 'deu errado'}       
+       return {'msg': 'deu errado'}   
