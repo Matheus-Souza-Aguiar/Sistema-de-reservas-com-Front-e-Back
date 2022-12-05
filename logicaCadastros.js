@@ -242,18 +242,77 @@ function confirmaReserva(id_car, reserve_outset, reserve_last){
 function upadate_state(){
     let form  = document.forms["formUpdate"]
     let newCarro = new Carro
-    axios.post('http://localhost:8000/update_car', 
+    axios.post('http://localhost:8000/check_board', 
     
     {
-        state: form["state"].value,
         board: form["board"].value
     }
     
-    ).then(response => {console.log(response.data)})
+    ).then(response => {
+        const data = response.data 
+        console.log(data)
+        printCar(data)
+   
+    })
     .catch(erro => {console.log(erro)});
-    alert("Carro encontrado")
-    this.form.reset();
+
 }
+
+function printCar(data){
+       
+    console.log("Resultados", data)
+
+    let tabela = document.getElementById("table")
+    console.log("tabela", tabela)
+    
+    let thead = criarTag("thead");
+    let tbody = criarTag("tbody");
+    let tfoot = criarTag("tfoot");
+
+
+    
+    
+    tabela.appendChild(thead);
+    tabela.appendChild(tbody);
+    tabela.appendChild(tfoot);
+
+    let linhaHead = criarTag("tr")
+    let indicesTabela = ["Id", "Modelo", "Placa", "Ano", "Disponibilidade"]
+
+    for(let i = 0; i < indicesTabela.length; i++){
+            
+        let th = criaCelula("th", indicesTabela[i]);
+        linhaHead.appendChild(th);
+        
+
+    }
+    thead.appendChild(linhaHead)
+    
+    
+    for(let i = 0; i < data.length; i++){
+        
+        var linhaBody = criarTag("tr"); 
+        
+    
+        
+        for(let j = 0; j < indicesTabela.length; j++){
+                
+            cel = '';
+            
+            
+            cel = criaCelula("td", data[i][j])
+
+            linhaBody.appendChild(cel);
+        
+        }
+        tbody.appendChild(linhaBody); 
+
+} 
+       
+   
+}
+
+
 
 // MRC90
 

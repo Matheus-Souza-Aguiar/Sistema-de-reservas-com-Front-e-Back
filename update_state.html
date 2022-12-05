@@ -15,36 +15,28 @@
 </head>  
 
 <body>
-    <div class="container">
-         
-       
-        <div id="inf">
-            <h1>Atualizar dados do veículo</h1>
-            <p>Informe o Modelo e a placa do carro que deseja alterar a disponibilidade</p>
-        </div>
+    <div id="container">
+  
 
         <div id="formU">
+            <h1>Atualizar dados do veículo</h1>
+            <p>Informe o Modelo e a placa do carro que deseja alterar a disponibilidade</p>
+            
             <form name="formUpdate" id="update"  method="post">
                 
-                <input id="model" name="model" type="text" placeholder="Modelo do carro" required><br><br>
-                <input id="board" name="board" type="text"  placeholder="Placa" required><br><br>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="state" id="state" value="Disponivel" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                      Disponivel
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="state" id="state1" value="Manutenção">
-                    <label class="form-check-label" for="exampleRadios2">
-                      Manutenção
-                    </label>
-                  </div>
-                <button type="button" class="btn btn-success" onclick="upadate_state()">Success</button>
+              Modelo <input id="model" name="model" type="text" placeholder="Ex: Gol G4" required><br><br>
+              Placa  <input id="board" name="board" type="text"  placeholder="Ex: GLG422" required><br><br>
+              <button type="button" class="btn btn-success" onclick="upadate_state()">Consultar veículo</button>
             </form>
         </div>
-         
+          
+          <div id="printcar">
+            <table id="table" class="table">
+              
+            </table>
+             
+          </div>    
     </div>
-  
+    
 
 </body>

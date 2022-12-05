@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    display: flex;
+}
+
+#inf{
+    position: relative;
+    top: 40px;
+}
+
+#formU{
+    position: relative; 
+    top: 60px;
+    left: 80px;
+}
+
+#printcar{
+    position: relative;
+    left: 200px;
+    top: 80px;
+}
