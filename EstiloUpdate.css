@@ -23,3 +23,41 @@
     left: 200px;
     top: 80px;
 }
+
+#model{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;;
+}
+
+#board{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;;
+}
+
+#state{
+    position: relative;
+    left: 20px;
+}
+#state1{
+    position: relative;
+    left: 20px;
+}
+
+#bto{
+    position: relative;
+    left: 50px;
+    bottom: 21px;
+}
+
+label{
+    position: relative;
+    left: 30px;
+}

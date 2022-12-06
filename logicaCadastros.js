@@ -242,9 +242,10 @@ function confirmaReserva(id_car, reserve_outset, reserve_last){
 function upadate_state(){
     let form  = document.forms["formUpdate"]
     let newCarro = new Carro
-    axios.post('http://localhost:8000/check_board', 
+    axios.post('http://localhost:8000/update_car', 
     
     {
+        state: form["state"].value,
         board: form["board"].value
     }
     
@@ -259,62 +260,76 @@ function upadate_state(){
 }
 
 function printCar(data){
-       
-    console.log("Resultados", data)
-
-    let tabela = document.getElementById("table")
-    console.log("tabela", tabela)
     
-    let thead = criarTag("thead");
-    let tbody = criarTag("tbody");
-    let tfoot = criarTag("tfoot");
-
-
-    
-    
-    tabela.appendChild(thead);
-    tabela.appendChild(tbody);
-    tabela.appendChild(tfoot);
-
-    let linhaHead = criarTag("tr")
-    let indicesTabela = ["Id", "Modelo", "Placa", "Ano", "Disponibilidade"]
-
-    for(let i = 0; i < indicesTabela.length; i++){
-            
-        let th = criaCelula("th", indicesTabela[i]);
-        linhaHead.appendChild(th);
-        
-
-    }
-    thead.appendChild(linhaHead)
-    
-    
-    for(let i = 0; i < data.length; i++){
-        
-        var linhaBody = criarTag("tr"); 
-        
-    
-        
-        for(let j = 0; j < indicesTabela.length; j++){
-                
-            cel = '';
-            
-            
-            cel = criaCelula("td", data[i][j])
-
-            linhaBody.appendChild(cel);
-        
-        }
-        tbody.appendChild(linhaBody); 
-
-} 
-       
+    const myElement = document.querySelector("thead")
+    const exist = document.body.contains(myElement)
    
+    if(exist == false){
+
+        
+        console.log("Resultados", data)
+
+        let tabela = document.getElementById("table")
+        console.log("tabela", tabela)
+        
+        let thead = criarTag("thead");
+        let tbody = criarTag("tbody");
+        let tfoot = criarTag("tfoot");
+
+
+        
+        
+        tabela.appendChild(thead);
+        tabela.appendChild(tbody);
+        tabela.appendChild(tfoot);
+
+        let linhaHead = criarTag("tr")
+        let indicesTabela = ["Id", "Modelo", "Placa", "Ano", "Disponibilidade"]
+
+        for(let i = 0; i < indicesTabela.length; i++){
+                
+            let th = criaCelula("th", indicesTabela[i]);
+            linhaHead.appendChild(th);
+            
+
+        }
+        thead.appendChild(linhaHead)
+        
+        
+        for(let i = 0; i < data.length; i++){
+            
+            var linhaBody = criarTag("tr"); 
+            
+        
+            
+            for(let j = 0; j < indicesTabela.length; j++){
+                    
+                cel = '';
+                
+                
+                cel = criaCelula("td", data[i][j])
+
+                linhaBody.appendChild(cel);
+            
+            }}
+            tbody.appendChild(linhaBody);
+        
+    }
+     else if(exist == true) {
+        removeUpdate(data)
+        
+    }
+        
+}          
+
+
+// Funções para pagina de delete
+
+function deleteReserve(){
+    axios.get('http://localhost:8000/check_reserve')
+    .then(response => {console.log(response.data)})
+    .catch(erro => {console.log(erro)});
 }
-
-
-
-// MRC90
 
 
 // Funções reutilizáveis 
@@ -349,3 +364,19 @@ function remove(data){
     devolveOpcoes(data)
 } 
 
+
+function removeUpdate(data){
+    
+     
+    let thead = document.querySelector('thead')
+    let tbody = document.querySelector('tbody')
+    let tfoot = document.querySelector('tfoot')
+
+     
+    thead.remove(thead)
+    tbody.remove(tbody)
+    tfoot.remove(tfoot)
+
+    
+    printCar(data)
+} 

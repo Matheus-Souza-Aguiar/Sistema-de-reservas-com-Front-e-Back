@@ -26,7 +26,15 @@
                 
               Modelo <input id="model" name="model" type="text" placeholder="Ex: Gol G4" required><br><br>
               Placa  <input id="board" name="board" type="text"  placeholder="Ex: GLG422" required><br><br>
-              <button type="button" class="btn btn-success" onclick="upadate_state()">Consultar veículo</button>
+              <input class="form-check-input" type="radio" name="state" id="state1" value="Disponivel" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Disponivel
+              </label> <br>
+              <input class="form-check-input" type="radio" name="state" id="state" value="Manutenção">
+              <label class="form-check-label" for="exampleRadios2">
+                Manutenção
+              </label> 
+              <button id="bto" type="button" class="btn btn-success" onclick="upadate_state()">Consultar veículo</button>
             </form>
         </div>
           
@@ -35,7 +43,9 @@
               
             </table>
              
-          </div>    
+          </div>  
+          
+          
     </div>
     
 
