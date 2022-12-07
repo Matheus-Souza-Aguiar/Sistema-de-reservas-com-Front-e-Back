@@ -1,18 +1,21 @@
+
+# Importando as libs
+
 import datetime
-import json
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import psycopg2
 
+# configurando a conexão com SGBD e Iniciando o FastAPI
 
 app = FastAPI()
 
-host = 'localhost'
+host     = 'localhost'
 database = 'postgres'
 username = 'postgres'
-pwd = 'AAAaaa123'
-port_id = '5432'
+pwd      = 'AAAaaa123'
+port_id  = '5432'
 
 conn = psycopg2.connect(
     host=host,
@@ -20,11 +23,11 @@ conn = psycopg2.connect(
     user=username,
     password=pwd,
     port=port_id)
-
 cursor = conn.cursor()
 
-origins = ['http://127.0.0.1:5500'] 
+# Defindo os parâmetros de segurança para requisição
 
+origins = ['http://127.0.0.1:5500'] 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -33,6 +36,9 @@ app.add_middleware(
     allow_headers=["*"],
 
 ) 
+
+
+# Definição das classes Carros e reservas
 
 class Cars(BaseModel):
     idcar: int = None
@@ -47,6 +53,8 @@ class ReservedCar(BaseModel):
     reserve_last: str = None
 
 
+# Função para requisição de cadastro
+
 @app.post('/cadastro')
 def reservar(cars: Cars):    
     
@@ -59,6 +67,8 @@ def reservar(cars: Cars):
     except:
         return {'Erro': 'Por favor conferir os dados do carro.'}
 
+
+# Função para requisição de consulta das reservas
 
 @app.post('/consulta_reserva')
 def reserved_car(reservedCar: ReservedCar):
@@ -173,6 +183,7 @@ def reserved_car(reservedCar: ReservedCar):
             return {'Erro': 'Verificar dados de reserva'}
         
 
+# Função para registro da reserva
 
 @app.post('/faz_reserva')
 def checkout(reservedCar: ReservedCar):
@@ -234,6 +245,7 @@ def checkout(reservedCar: ReservedCar):
             return {'Erro': 'Verificar dados de reserva (id)'}
 
 
+# Função para atualização de cadastro
 
 @app.post('/update_car')
 def update_state(cars: Cars):
@@ -258,6 +270,9 @@ def update_state(cars: Cars):
     except:
         return {'msg': 'Não encontrado'}    
 
+
+# Função para consultar todas as reservas
+
 @app.get('/check_reserve')
 def check_reserve():
     
@@ -271,6 +286,8 @@ def check_reserve():
 
     return car
 
+
+# Função para deletar uma reserva
 
 @app.post('/delete_reserve')
 def delete_reserve(reservedCar: ReservedCar):
